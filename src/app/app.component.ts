@@ -1,9 +1,36 @@
 import { Component } from '@angular/core';
+import { TodoItem } from '../types/todo';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'mg-todolist';
+  items: TodoItem[] = [
+    {
+      id: '1212',
+      isComplete: false,
+      name: 'example',
+    },
+  ];
+
+  handleAddItem(newItem: TodoItem) {
+    this.items.push(newItem);
+  }
+
+  handleToogleItemStatus(itemId: string) {
+    const index = this.items.findIndex((item) => item.id === itemId);
+
+    if (index !== -1) {
+      // not recomended to modify directly the array
+      const itemsCopy = [...this.items];
+
+      itemsCopy[index] = {
+        ...this.items[index],
+        isComplete: !this.items[index].isComplete,
+      };
+
+      this.items = itemsCopy;
+    }
+  }
 }

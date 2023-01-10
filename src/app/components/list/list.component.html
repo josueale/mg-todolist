@@ -11,9 +11,8 @@
     </div>
 
     <div>
-      <!-- todo add proper directives to render items -->
       <!-- list here -->
-      <app-item></app-item>
+      <app-item *ngFor="let currentItem of items" [item]="currentItem"></app-item>
     </div>
   </div>
 </div>

@@ -11,8 +11,9 @@
     </div>
 
     <div>
-      <!-- list here -->
-      <app-item *ngFor="let currentItem of items" [item]="currentItem"></app-item>
+      <!-- list of items -->
+      <app-item *ngFor="let currentItem of items" (onDeleteItem)="onDelete($event)" [item]="currentItem"></app-item>
+
     </div>
   </div>
 </div>

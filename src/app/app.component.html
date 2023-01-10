@@ -1,5 +1,5 @@
 <main class="bg-gray-900 text-white">
 
-  <app-list [items]="items"></app-list>
+  <app-list (onDeleteItem)="handleDeleteItem($event)" [items]="items"></app-list>
 
 </main>

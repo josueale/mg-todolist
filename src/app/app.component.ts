@@ -14,6 +14,11 @@ export class AppComponent {
     },
   ];
 
+  handleDeleteItem(idToDelete: TodoItem['id']) {
+    const newItems = this.items.filter((item) => item.id !== idToDelete);
+    this.items = newItems;
+  }
+
   handleAddItem(newItem: TodoItem) {
     this.items.push(newItem);
   }

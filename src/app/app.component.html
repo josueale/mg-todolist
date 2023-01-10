@@ -1,10 +1,17 @@
+<!-- proposal: move this to another component -->
+<nav class="border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-800">
+  <div class="container flex flex-wrap items-center justify-between mx-auto">
+    <a routerLink="/" class="flex items-center">
+      <img src="/assets/images/LOGOTIPO_2.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+    </a>
+  </div>
+</nav>
+
+
+
 <main class="bg-gray-900 text-white">
 
-  <app-list
-    [items]="items"
-    (onAddItem)="handleAddItem($event)"
-    (onDeleteItem)="handleDeleteItem($event)"
-    (onToggleItem)="handleToggleItemStatus($event)"
-  ></app-list>
+  <app-list [items]="items" (onAddItem)="handleAddItem($event)" (onDeleteItem)="handleDeleteItem($event)"
+    (onToggleItem)="handleToggleItemStatus($event)"></app-list>
 
 </main>

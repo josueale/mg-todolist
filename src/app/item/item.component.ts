@@ -10,7 +10,13 @@ export class ItemComponent {
 
   @Output() onDeleteItem = new EventEmitter<TodoItem['id']>();
 
-  onClick(id: string) {
+  @Output() onToggleItem = new EventEmitter<TodoItem['id']>();
+
+  onDeleteClick(id: string) {
     this.onDeleteItem.emit(id);
+  }
+
+  onToggleClick(id: string) {
+    this.onToggleItem.emit(id);
   }
 }

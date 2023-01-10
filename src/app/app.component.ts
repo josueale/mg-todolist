@@ -23,7 +23,7 @@ export class AppComponent {
     this.items.push(newItem);
   }
 
-  handleToogleItemStatus(itemId: string) {
+  handleToggleItemStatus(itemId: TodoItem['id']) {
     const index = this.items.findIndex((item) => item.id === itemId);
 
     if (index !== -1) {

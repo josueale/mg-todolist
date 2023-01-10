@@ -1,5 +1,12 @@
 <main class="bg-gray-900 text-white">
 
-  <app-list (onDeleteItem)="handleDeleteItem($event)" [items]="items"></app-list>
+  {{items | json}}
+
+  <app-list
+    [items]="items"
+    (onAddItem)="handleAddItem($event)"
+    (onDeleteItem)="handleDeleteItem($event)"
+    (onToggleItem)="handleToggleItemStatus($event)"
+  ></app-list>
 
 </main>

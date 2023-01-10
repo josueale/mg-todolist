@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoItem } from '../types/todo';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   items: TodoItem[] = [
     {
       id: '1212',
@@ -14,6 +14,10 @@ export class AppComponent {
     },
   ];
 
+  saveItemsInLocalStorage() {
+    globalThis.localStorage.setItem('items', JSON.stringify(this.items));
+  }
+
   handleDeleteItem(idToDelete: TodoItem['id']) {
     const newItems = this.items.filter((item) => item.id !== idToDelete);
     this.items = newItems;
@@ -21,6 +25,8 @@ export class AppComponent {
 
   handleAddItem(newItem: TodoItem) {
     this.items.push(newItem);
+
+    this.saveItemsInLocalStorage();
   }
 
   handleToggleItemStatus(itemId: TodoItem['id']) {
@@ -36,6 +42,14 @@ export class AppComponent {
       };
 
       this.items = itemsCopy;
+      this.saveItemsInLocalStorage();
     }
+  }
+
+  ngOnInit() {
+    const rawItems = globalThis.localStorage.getItem('items') ?? '[]';
+    const newItems = JSON.parse(rawItems);
+
+    this.items = newItems;
   }
 }

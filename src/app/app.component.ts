@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   handleDeleteItem(idToDelete: TodoItem['id']) {
     const newItems = this.items.filter((item) => item.id !== idToDelete);
     this.items = newItems;
+    this.saveItemsInLocalStorage();
+
   }
 
   handleAddItem(newItem: TodoItem) {
